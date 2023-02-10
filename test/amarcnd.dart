@@ -1,6 +1,5 @@
+import 'package:amarcdn/amarcdn.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:amarcdn_s4_flutter_sdk/amarcdn_s4_flutter_sdk.dart';
 
 void main() {
   test('adds one to input values', () {

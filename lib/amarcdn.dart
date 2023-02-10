@@ -1,4 +1,4 @@
-library amarcdn_s4_flutter_sdk;
+library amarcdn;
 
 /// A Calculator.
 class Calculator {
