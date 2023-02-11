@@ -1,6 +1,6 @@
 import '../models/region.dart';
 
-var regionData = [
+var regionList = [
   RegionModel(
     regionUrl: 'bd1.amarcdn.com',
     regionKey: 'RG_BD_1_DHAKA',
@@ -26,3 +26,9 @@ var regionData = [
     regionTitle: 'EU-Germany',
   ),
 ];
+RegionModel getRegionIdAsKey({required String regionTitle}) {
+  final RegionModel regionModel =
+      regionList.firstWhere((element) => regionTitle == element.regionTitle);
+
+  return regionModel;
+}
