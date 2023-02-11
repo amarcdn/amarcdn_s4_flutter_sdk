@@ -1,3 +1,4 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Initial Release. 
+* You can create bucket in AmarCDN (Best Cloud Services Provider)
