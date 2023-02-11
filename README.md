@@ -1,39 +1,35 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# AmarCDN SDK for Flutter
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+AmarCDN is a product of [TongBari](https://tongbari.com). We have started our domain and hosting business since 2011. Over this time, we have re-branding ourself. Now we are providing Global Standard compatible cloud services.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## What is S4?
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Before going to tell about S4 we have to know about S3. S3 is the abbreviation of Simple Storage Service. So the S4 is Secured S3. Finally S4 stands for Secured - Simple Storage Service.
 
-## Features
+## What is Bucket?
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+A container for objects stored in AmarCDN S4. AmarCDN will provide a subdomain for the bucket. The bucket is globally unique but your subdomain will be prefix with regional url. Bucket name should be 4-60 chararacters
 
-## Getting started
+### Install via flutter packages.
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+    flutter pub add amarcdn
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+### Create instance of AmarCDN with below code.
 
 ```dart
-const like = 'sample';
+AmarCND _amarCND = AmarCND(apiKey: _apiKey,
+ apiSecretKey: _apiSecretKey, regionTitle: _regionTitle);
 ```
 
-## Additional information
+### Create Bucket Example
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+Future createBucket() async {
+    try {
+      final response = await _amarCND.createBucket(
+          bucketName: 'titdssflsdfe', isPrivate: false);
+      debugPrint(response.data.toString());
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+```
