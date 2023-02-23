@@ -1,5 +1,5 @@
 name: amarcdn_s4
-description: A new Flutter package project.
+description: Flutter sdk for AmarCDN s4(Storage Service).
 version: 0.0.1
 homepage: https://github.com/amarcdn/amarcdn_s4_flutter_sdk
 
