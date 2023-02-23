@@ -17,7 +17,7 @@ A container for objects stored in AmarCDN S4. AmarCDN will provide a subdomain f
 ### Create instance of AmarCDN with below code.
 
 ```dart
-AmarCND _amarCND = AmarCND(apiKey: _apiKey,
+AmarCDN _amarCDN = AmarCDN(apiKey: _apiKey,
  apiSecretKey: _apiSecretKey, regionTitle: _regionTitle);
 ```
 
@@ -26,7 +26,7 @@ AmarCND _amarCND = AmarCND(apiKey: _apiKey,
 ```dart
 Future createBucket() async {
     try {
-      final response = await _amarCND.createBucket(
+      final response = await _amarCDN.createBucket(
           bucketName: 'titdssflsdfe', isPrivate: false);
       debugPrint(response.data.toString());
     } catch (e) {

@@ -5,13 +5,13 @@ import 'package:dio/dio.dart';
 import 'data/region_data.dart';
 import 'models/region.dart';
 
-class AmarCND {
+class AmarCDN {
   String apiKey;
   String apiSecretKey;
   String regionTitle;
   late Dio _dio;
 
-  AmarCND({
+  AmarCDN({
     required this.apiKey,
     required this.apiSecretKey,
     required this.regionTitle,
