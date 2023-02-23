@@ -12,7 +12,7 @@ A container for objects stored in AmarCDN S4. AmarCDN will provide a subdomain f
 
 ### Install via flutter packages.
 
-    flutter pub add amarcdn
+    flutter pub add amarcdn_s4
 
 ### Create instance of AmarCDN with below code.
 

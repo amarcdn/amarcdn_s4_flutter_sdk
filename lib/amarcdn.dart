@@ -1,4 +1,4 @@
-library amarcdn;
+library amarcdn_s4;
 
 import 'package:dio/dio.dart';
 
