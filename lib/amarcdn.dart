@@ -10,6 +10,8 @@ class AmarCDN {
   String apiSecretKey;
   String regionTitle;
   late Dio _dio;
+  late Map<String, dynamic> header;
+  late RegionModel regionModel;
 
   AmarCDN({
     required this.apiKey,
@@ -17,20 +19,18 @@ class AmarCDN {
     required this.regionTitle,
   }) {
     _dio = Dio();
+    regionModel = getRegionIdAsKey(regionTitle: regionTitle);
+    header = <String, String>{
+      'api-key': apiKey,
+      'api-secret-key': apiSecretKey,
+      'rid': regionModel.regionId,
+    };
   }
 
   Future<Response> createBucket({
     required String bucketName,
     bool isPrivate = false,
   }) async {
-    RegionModel regionModel = getRegionIdAsKey(regionTitle: regionTitle);
-
-    Map<String, dynamic> header = <String, String>{
-      'api-key': apiKey,
-      'api-secret-key': apiSecretKey,
-      'rid': regionModel.regionId,
-    };
-
     FormData formData = FormData();
     formData.fields.add(MapEntry('bucket', bucketName));
     formData.fields.add(MapEntry('isPrivate', isPrivate ? 'YES' : 'NO'));
