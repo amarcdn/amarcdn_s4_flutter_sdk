@@ -67,4 +67,27 @@ class AmarCDN {
       throw Exception(error.message);
     }
   }
+
+  Future<Response> deleteBucket(
+      {required String bucketName, required String bucketId}) async {
+    FormData formData = FormData();
+    formData.fields.add(MapEntry('bucket', bucketName));
+    formData.fields.add(MapEntry('bucketId', bucketId));
+    formData.fields.add(MapEntry('region', regionModel.regionKey));
+
+    Response response;
+
+    var url = 'https://${regionModel.regionUrl}/bucket/delete';
+
+    try {
+      response = await _dio.post(
+        url,
+        data: formData,
+        options: Options(headers: header),
+      );
+      return response;
+    } on DioError catch (error) {
+      throw Exception(error.message);
+    }
+  }
 }
