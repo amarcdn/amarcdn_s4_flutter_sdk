@@ -46,3 +46,19 @@ Future getBucketList() async {
     }
   }
 ```
+
+### Delete Bucket Example
+
+```dart
+Future deleteBucket() async {
+    try {
+      final response = await _amarCND.deleteBucket(
+        bucketName: 'shamrat',
+        bucketId: 'a2dfddd5-f3e2-46b9-9dff-d4fe1e30c344',
+      );
+      debugPrint(response.data.toString());
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+```
