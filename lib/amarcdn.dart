@@ -51,4 +51,20 @@ class AmarCDN {
       throw Exception(error.message);
     }
   }
+
+  Future<Response> getBucketList() async {
+    Response response;
+
+    var url = 'https://${regionModel.regionUrl}/bucket/list';
+
+    try {
+      response = await _dio.get(
+        url,
+        options: Options(headers: header),
+      );
+      return response;
+    } on DioError catch (error) {
+      throw Exception(error.message);
+    }
+  }
 }
