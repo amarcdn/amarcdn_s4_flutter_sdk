@@ -27,9 +27,22 @@ AmarCDN _amarCDN = AmarCDN(apiKey: _apiKey,
 Future createBucket() async {
     try {
       final response = await _amarCDN.createBucket(
-          bucketName: 'titdssflsdfe', isPrivate: false);
+          bucketName: 'nizam', isPrivate: false);
       debugPrint(response.data.toString());
     } catch (e) {
       debugPrint(e.toString());
     }
+```
+
+### Get Bucket List Example
+
+```dart
+Future getBucketList() async {
+    try {
+      final response = await _amarCND.getBucketList();
+      debugPrint(response.data.toString());
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
 ```
