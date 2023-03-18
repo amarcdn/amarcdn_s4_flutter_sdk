@@ -136,4 +136,35 @@ class AmarCDN {
       rethrow;
     }
   }
+
+  Stream<Response> uploadSingleFile({
+    required String bucketName,
+    required String bucketId,
+    required File file,
+  }) {
+    int fileLength = file.lengthSync();
+    if (fileLength > chunkSize) {
+      try {
+        return _uploadFileAsChunk(
+            bucketName: bucketName, bucketId: bucketId, file: file);
+      } catch (e) {
+        rethrow;
+      }
+    } else {
+      FormData formData = FormData();
+      formData.fields.add(MapEntry('bucket', bucketName));
+      formData.fields.add(MapEntry('bucketId', bucketId));
+      formData.fields.add(MapEntry('region', regionModel.regionKey));
+      formData.files
+          .add(MapEntry('files', MultipartFile.fromFileSync(file.path)));
+
+      try {
+        var response = _dio.post('https://global.amarcdn.com/file/upload-many',
+            data: formData, options: Options(headers: header));
+        return Stream<Response>.fromFuture(response);
+      } catch (e) {
+        rethrow;
+      }
+    }
+  }
 }
