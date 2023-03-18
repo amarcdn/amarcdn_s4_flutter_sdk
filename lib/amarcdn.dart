@@ -167,4 +167,19 @@ class AmarCDN {
       }
     }
   }
+
+  Stream<Stream<Response>> uploadMultipleFile({
+    required String bucketName,
+    required String bucketId,
+    required List<File> files,
+  }) async* {
+    try {
+      for (File file in files) {
+        yield uploadSingleFile(
+            bucketName: bucketName, bucketId: bucketId, file: file);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
