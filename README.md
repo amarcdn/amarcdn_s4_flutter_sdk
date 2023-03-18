@@ -62,3 +62,56 @@ Future deleteBucket() async {
     }
   }
 ```
+
+### Single File Upload Example
+
+```dart
+Future uploadSingleFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      File file = File(result.files.single.path!);
+      try {
+        _amarCND
+            .uploadSingleFile(
+              bucketName: 'testfolder',
+              bucketId: 'a2dfddd5-f3e2-46b9-9dff-d4fe1e30c344',
+              file: file,
+            )
+            .listen((response) => debugPrint(response.data.toString()));
+      } catch (e) {
+        debugPrint(e.toString());
+      }
+    } else {
+      debugPrint('could not pick files');
+    }
+  }
+```
+
+### Multiple File Upload Example
+
+```dart
+Future<void> multipleFileUpload() async {
+    FilePickerResult? result =
+        await FilePicker.platform.pickFiles(allowMultiple: true);
+
+    if (result != null) {
+      List<File> files = result.paths.map((path) => File(path!)).toList();
+      try {
+        _amarCND
+            .uploadMultipleFile(
+              bucketName: 'testfolder',
+              bucketId: 'a2dfddd5-f3e2-46b9-9dff-d4fe1e30c344',
+              files: files,
+            )
+            .listen((streamResponse) => streamResponse
+                .listen((response) => debugPrint(response.data.toString())));
+      } catch (e) {
+        debugPrint(e.toString());
+      }
+    } else {
+      debugPrint('could not pick files');
+    }
+  }
+```
+
